@@ -1,7 +1,7 @@
 from config.db import Session
 
 
-def get_db_session():
+async def get_db_session():
     session = Session()
     try:
         yield session
