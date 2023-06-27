@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from sqlalchemy.orm import Session
 
 from api.Message.MessageAPI import MessageAPI
@@ -11,8 +13,10 @@ class MessageService(BaseServiceClass):
             from_id: int,
             to_id: int,
             message: str,
-            date: str
+            date: str | None
     ):
+        if date is None:
+            date = str(datetime.now())
         MessageAPI.create(
             session,
             from_id,
